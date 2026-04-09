@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pack de LUTs Profissionais — AguiarFilm</title>
+<meta name="description" content="Transforme qualquer vídeo em nível profissional com 1 clique. Pack de LUTs por apenas R$14,90.">
+
+<style>
+  /* ===== RESET & BASE ===== */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #241e1f;
+    --bg2: #2e2728;
+    --bg3: #1a1516;
+    --text: #efeee7;
+    --text-muted: #a8a49e;
+    --accent: #588caf;
+    --accent-dark: #3d6e8e;
+    --accent-light: #72a8cc;
+    --border: rgba(239,238,231,0.1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  /* ===== TYPOGRAPHY ===== */
+  h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; }
+  h2 { font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 700; line-height: 1.25; }
+  h3 { font-size: 1.15rem; font-weight: 600; }
+  p  { color: var(--text-muted); line-height: 1.75; }
+
+  /* ===== LAYOUT ===== */
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; }
+  section { padding: 5rem 0; }
+
+  /* ===== HEADER ===== */
+  header {
+    position: sticky; top: 0; z-index: 100;
+    background: rgba(36,30,31,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 0;
+  }
+  header .container { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .logo-wrap { display: flex; align-items: center; }
+  .logo-svg { height: 36px; width: auto; }
+
+  /* ===== CTA BUTTON ===== */
+  .btn {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.85rem 2rem;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+    box-shadow: 0 4px 20px rgba(88,140,175,0.35);
+    border: none; cursor: pointer;
+    white-space: nowrap;
+  }
+  .btn:hover { background: var(--accent-light); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(88,140,175,0.5); }
+  .btn:active { transform: translateY(0); }
+  .btn-lg { font-size: 1.15rem; padding: 1.1rem 2.5rem; border-radius: 10px; }
+  .btn-xl { font-size: 1.25rem; padding: 1.3rem 3rem; border-radius: 12px; }
+
+  /* ===== BADGE ===== */
+  .badge {
+    display: inline-block;
+    background: rgba(88,140,175,0.18);
+    color: var(--accent-light);
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.35rem 1rem;
+    border-radius: 100px;
+    border: 1px solid rgba(88,140,175,0.3);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 1.25rem;
+  }
+
+  /* ===== HERO ===== */
+  #hero {
+    padding: 6rem 0 5rem;
+    background: radial-gradient(ellipse 80% 60% at 50% -10%, rgba(88,140,175,0.15) 0%, transparent 70%);
+  }
+  #hero .container { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+  #hero h1 span { color: var(--accent); }
+  #hero p { font-size: 1.1rem; margin: 1.25rem 0 2rem; color: var(--text-muted); }
+  .hero-cta { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+  .hero-note { font-size: 0.85rem; color: var(--text-muted); }
+  .hero-note strong { color: var(--text); }
+
+  /* Video embed */
+  .video-wrap {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--bg3);
+    aspect-ratio: 16/9;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+  }
+  .video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
+  .video-placeholder {
+    position: absolute; inset: 0;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    gap: 1rem; color: var(--text-muted);
+    background: var(--bg3);
+  }
+  .play-icon {
+    width: 64px; height: 64px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .play-icon:hover { transform: scale(1.1); background: var(--accent-light); }
+  .play-icon svg { margin-left: 4px; }
+
+  /* ===== SECTION HEADER ===== */
+  .section-header { text-align: center; margin-bottom: 3.5rem; }
+  .section-header p { margin-top: 0.75rem; max-width: 560px; margin-inline: auto; }
+
+  /* ===== BEFORE/AFTER ===== */
+  #proof { background: var(--bg3); }
+  .comparison-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+  .comparison-card {
+    border-radius: 14px; overflow: hidden;
+    border: 1px solid var(--border);
+    background: var(--bg2);
+  }
+  .comparison-images {
+    display: grid; grid-template-columns: 1fr 1fr;
+    position: relative;
+  }
+  .comparison-side {
+    padding: 2rem 1rem 1rem;
+    display: flex; flex-direction: column; align-items: center;
+    gap: 0.5rem;
+  }
+  .comparison-side.before { background: #1e1a1b; }
+  .comparison-side.after  { background: #1d2630; }
+  .comparison-thumb {
+    width: 100%; aspect-ratio: 16/9;
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .comparison-thumb.before-img { background: linear-gradient(135deg, #3a2e2e 0%, #524545 100%); color: #907070; }
+  .comparison-thumb.after-img  { background: linear-gradient(135deg, #1a2e40 0%, #2d5068 100%); color: #6aabcc; }
+  .label-before { font-size: 0.72rem; font-weight: 700; color: #907070; letter-spacing: 0.1em; text-transform: uppercase; }
+  .label-after  { font-size: 0.72rem; font-weight: 700; color: var(--accent-light); letter-spacing: 0.1em; text-transform: uppercase; }
+  .comparison-footer { padding: 0.85rem 1rem; border-top: 1px solid var(--border); }
+  .comparison-footer p { font-size: 0.85rem; color: var(--text-muted); margin: 0; }
+  .divider-line {
+    position: absolute; top: 0; bottom: 0; left: 50%;
+    width: 2px; background: var(--accent);
+    transform: translateX(-50%);
+    z-index: 2;
+  }
+  .divider-icon {
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%,-50%);
+    background: var(--accent); border-radius: 50%;
+    width: 28px; height: 28px;
+    display: flex; align-items: center; justify-content: center;
+    z-index: 3; font-size: 12px; font-weight: 700; color: #fff;
+    box-shadow: 0 0 0 4px var(--bg2);
+  }
+
+  /* ===== BENEFITS ===== */
+  .benefits-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+  .benefit-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.75rem 1.5rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .benefit-card:hover { border-color: rgba(88,140,175,0.4); transform: translateY(-3px); }
+  .benefit-icon {
+    width: 48px; height: 48px;
+    background: rgba(88,140,175,0.12);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    margin-bottom: 1rem;
+    font-size: 22px;
+  }
+  .benefit-card h3 { color: var(--text); margin-bottom: 0.4rem; font-size: 1rem; }
+  .benefit-card p { font-size: 0.9rem; margin: 0; }
+
+  /* ===== HOW IT WORKS ===== */
+  #how { background: var(--bg3); }
+  .steps { display: flex; flex-direction: column; gap: 1.5rem; max-width: 680px; margin: 0 auto; }
+  .step { display: flex; gap: 1.5rem; align-items: flex-start; }
+  .step-num {
+    flex-shrink: 0;
+    width: 52px; height: 52px;
+    background: var(--accent);
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.3rem; font-weight: 800; color: #fff;
+  }
+  .step-content h3 { color: var(--text); margin-bottom: 0.3rem; }
+  .step-content p  { font-size: 0.95rem; margin: 0; }
+  .step-connector { width: 2px; height: 40px; background: var(--border); margin: 0 0 0 25px; }
+
+  /* ===== COMPATIBILITY ===== */
+  .compat-grid { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+  .compat-card {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.25rem 2rem;
+    display: flex; align-items: center; gap: 0.75rem;
+    transition: border-color 0.2s;
+    min-width: 180px;
+  }
+  .compat-card:hover { border-color: rgba(88,140,175,0.4); }
+  .compat-icon { font-size: 1.75rem; }
+  .compat-card span { font-weight: 600; font-size: 0.95rem; }
+
+  /* ===== OBJECTIONS ===== */
+  #objections { background: var(--bg3); }
+  .objection-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; }
+  .objection-item {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 12px 12px 0;
+    padding: 1.25rem 1.5rem;
+    display: flex; gap: 1rem; align-items: flex-start;
+  }
+  .objection-check {
+    flex-shrink: 0;
+    color: var(--accent);
+    font-size: 1.25rem;
+    line-height: 1;
+    margin-top: 2px;
+  }
+  .objection-item h3 { font-size: 0.95rem; color: var(--text); margin-bottom: 0.25rem; }
+  .objection-item p  { font-size: 0.85rem; margin: 0; }
+
+  /* ===== OFFER ===== */
+  #offer { background: radial-gradient(ellipse 70% 80% at 50% 50%, rgba(88,140,175,0.08) 0%, transparent 70%); }
+  .offer-box {
+    max-width: 560px; margin: 0 auto;
+    background: var(--bg2);
+    border: 1px solid rgba(88,140,175,0.3);
+    border-radius: 20px;
+    padding: 3rem 2.5rem;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.4), 0 0 0 1px rgba(88,140,175,0.1);
+  }
+  .price-old { font-size: 1.1rem; color: var(--text-muted); text-decoration: line-through; margin-bottom: 0.25rem; }
+  .price-new { font-size: 3.5rem; font-weight: 900; color: var(--text); line-height: 1; }
+  .price-new span { font-size: 1.75rem; font-weight: 700; vertical-align: top; margin-top: 0.5rem; display: inline-block; }
+  .price-new em { font-size: 1rem; font-style: normal; color: var(--text-muted); font-weight: 400; }
+  .price-tag { font-size: 0.85rem; color: var(--accent-light); margin-top: 0.5rem; }
+  .offer-features { margin: 2rem 0; text-align: left; display: flex; flex-direction: column; gap: 0.75rem; }
+  .offer-feature { display: flex; align-items: center; gap: 0.75rem; font-size: 0.95rem; color: var(--text-muted); }
+  .offer-feature svg { flex-shrink: 0; color: var(--accent); }
+  .offer-feature strong { color: var(--text); }
+  .guarantee { margin-top: 1.5rem; font-size: 0.8rem; color: var(--text-muted); border-top: 1px solid var(--border); padding-top: 1.25rem; }
+  .guarantee strong { color: var(--text); }
+
+  /* ===== FINAL CTA ===== */
+  #final-cta {
+    background: var(--bg3);
+    text-align: center;
+  }
+  #final-cta h2 { max-width: 620px; margin: 0 auto 1rem; }
+  #final-cta p  { max-width: 500px; margin: 0 auto 2.5rem; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: var(--bg3);
+    border-top: 1px solid var(--border);
+    padding: 2rem 0;
+    text-align: center;
+  }
+  footer p { font-size: 0.8rem; color: var(--text-muted); margin: 0; }
+
+  /* ===== FLOATING CTA ===== */
+  .floating-cta {
+    position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 200;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .floating-cta.visible { opacity: 1; pointer-events: all; }
+
+  /* ===== DIVIDER ===== */
+  .divider { height: 1px; background: var(--border); margin: 0; }
+
+  /* ===== RESPONSIVE ===== */
+  @media (max-width: 768px) {
+    #hero .container { grid-template-columns: 1fr; gap: 2.5rem; }
+    section { padding: 3.5rem 0; }
+    .offer-box { padding: 2rem 1.5rem; }
+    .price-new { font-size: 2.75rem; }
+    .floating-cta { display: none; }
+    .hero-cta { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header>
+  <div class="container">
+    <!-- Logo AguiarFilm (SVG inline, cores originais da marca) -->
+    <div class="logo-wrap">
+      <svg class="logo-svg" viewBox="0 0 3508 2480.4" xmlns="http://www.w3.org/2000/svg" aria-label="AguiarFilm">
+        <defs>
+          <style>
+            .fil0{fill:#EFEEE7}
+            .fil1{fill:#588CAF}
+            .fnt0{font-weight:900;font-size:555.52px;font-family:'Obviously Black',sans-serif}
+            .fnt1{font-weight:normal;font-size:304.2px;font-family:'Obviously',sans-serif}
+          </style>
+        </defs>
+        <!-- AGUIAR em branco -->
+        <text x="120.14" y="1449.37" class="fil0 fnt0">AGUIAR</text>
+        <!-- FILM em azul da marca -->
+        <text x="2612.18" y="1449.37" class="fil1 fnt1">FILM</text>
+      </svg>
+    </div>
+    <a href="https://pay.kiwify.com.br/8Z7BKKo" class="btn" target="_blank" rel="noopener">Quero meus LUTs — R$14,90</a>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="container">
+    <div>
+      <div class="badge">✦ Pack de LUTs Profissionais</div>
+      <h1>Seu vídeo com cara de <span>profissional</span> em 1 clique</h1>
+      <p>Chega de vídeos apagados e sem vida. Aplique cores cinematográficas de nível profissional em segundos — sem precisar saber color grading.</p>
+      <div class="hero-cta">
+        <a href="https://pay.kiwify.com.br/8Z7BKKo" class="btn btn-lg" target="_blank" rel="noopener">
+          ▶ Quero meus LUTs agora
+        </a>
+        <p class="hero-note">Por apenas <strong>R$14,90</strong> · Download imediato</p>
+      </div>
+    </div>
+
+    <!-- Área de vídeo — substitua o src do iframe pelo link do seu vídeo -->
+    <div class="video-wrap">
+      <!--
+        INSTRUÇÃO: Substitua a div abaixo por um iframe do YouTube ou Vimeo.
+        Exemplo YouTube:
+        <iframe src="https://youtu.be/iDrEYRMVpyw"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+      -->
+      <div class="video-placeholder">
+        <div class="play-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M8 5v14l11-7z"/></svg>
+        </div>
+        <p style="font-size:0.9rem;margin:0;">Assista à transformação</p>
+        <p style="font-size:0.75rem;margin:0;opacity:0.5;">Insira seu vídeo aqui</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROVA VISUAL ===== -->
+<section id="proof">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge">Antes & Depois</div>
+      <h2>Veja a transformação com seus próprios olhos</h2>
+      <p>O mesmo vídeo, com e sem o LUT aplicado. Você decide qual parece profissional.</p>
+    </div>
+
+    <div class="comparison-grid">
+      <!-- Card 1 -->
+      <div class="comparison-card">
+        <div class="comparison-images">
+          <div class="comparison-side before">
+            <div class="comparison-thumb before-img">Sem LUT</div>
+            <span class="label-before">Antes</span>
+          </div>
+          <div class="divider-line"></div>
+          <div class="divider-icon">↔</div>
+          <div class="comparison-side after">
+            <div class="comparison-thumb after-img">Com LUT</div>
+            <span class="label-after">Depois</span>
+          </div>
+        </div>
+        <div class="comparison-footer">
+          <p>LUT Cinematic Blue — perfeito para ambientes urbanos e externos</p>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="comparison-card">
+        <div class="comparison-images">
+          <div class="comparison-side before">
+            <div class="comparison-thumb before-img">Sem LUT</div>
+            <span class="label-before">Antes</span>
+          </div>
+          <div class="divider-line"></div>
+          <div class="divider-icon">↔</div>
+          <div class="comparison-side after">
+            <div class="comparison-thumb after-img">Com LUT</div>
+            <span class="label-after">Depois</span>
+          </div>
+        </div>
+        <div class="comparison-footer">
+          <p>LUT Golden Hour — tons quentes e cinematográficos para qualquer cena</p>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="comparison-card">
+        <div class="comparison-images">
+          <div class="comparison-side before">
+            <div class="comparison-thumb before-img">Sem LUT</div>
+            <span class="label-before">Antes</span>
+          </div>
+          <div class="divider-line"></div>
+          <div class="divider-icon">↔</div>
+          <div class="comparison-side after">
+            <div class="comparison-thumb after-img">Com LUT</div>
+            <span class="label-after">Depois</span>
+          </div>
+        </div>
+        <div class="comparison-footer">
+          <p>LUT Matte Film — look de filme, ideal para vlogs e reels</p>
+        </div>
+      </div>
+    </div>
+    <!-- INSTRUÇÃO: Substitua as .comparison-thumb por imagens reais usando <img src="..." /> -->
+  </div>
+</section>
+
+<!-- ===== BENEFÍCIOS ===== -->
+<section id="benefits">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge">Por que funciona</div>
+      <h2>O que você ganha com o Pack</h2>
+    </div>
+
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">⚡</div>
+        <h3>Resultado instantâneo</h3>
+        <p>Aplique o LUT e veja a transformação em tempo real. Zero curva de aprendizado.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🎬</div>
+        <h3>Look cinematográfico</h3>
+        <p>Cores cuidadosamente calibradas para dar aquele aspecto de produção profissional.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">📱</div>
+        <h3>Funciona no celular</h3>
+        <p>Compatível com CapCut — edite direto do smartphone sem precisar de computador.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🎯</div>
+        <h3>Feito para iniciantes</h3>
+        <p>Não precisa entender de cor, temperatura ou curvas. É selecionar e aplicar.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">📦</div>
+        <h3>Múltiplos estilos</h3>
+        <p>Vários LUTs no pack para cada tipo de cena, mood e plataforma.</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">⬇️</div>
+        <h3>Download imediato</h3>
+        <p>Pagou, baixou, editou. Sem espera, sem enrolação.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== COMO FUNCIONA ===== -->
+<section id="how">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge">Simples assim</div>
+      <h2>3 passos para transformar seu vídeo</h2>
+    </div>
+
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Faça o download e importe o LUT</h3>
+          <p>Após a compra, baixe o pack e importe os arquivos .cube diretamente no seu editor favorito.</p>
+        </div>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Aplique no seu vídeo com 1 clique</h3>
+          <p>Selecione o LUT que mais combina com a cena e aplique. É só arrastar ou selecionar no menu.</p>
+        </div>
+      </div>
+      <div class="step-connector"></div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Resultado profissional instantâneo</h3>
+          <p>Pronto. Seu vídeo agora tem cor de produção profissional. Exporte e publique.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== COMPATIBILIDADE ===== -->
+<section id="compat">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge">Compatibilidade</div>
+      <h2>Funciona nos editores que você já usa</h2>
+      <p>Compatível com os principais softwares de edição de vídeo — no celular e no computador.</p>
+    </div>
+
+    <div class="compat-grid">
+      <div class="compat-card">
+        <div class="compat-icon">🎞️</div>
+        <span>Premiere Pro</span>
+      </div>
+      <div class="compat-card">
+        <div class="compat-icon">📱</div>
+        <span>CapCut</span>
+      </div>
+      <div class="compat-card">
+        <div class="compat-icon">🎨</div>
+        <span>DaVinci Resolve</span>
+      </div>
+      <div class="compat-card">
+        <div class="compat-icon">🍎</div>
+        <span>Final Cut Pro</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- ===== QUEBRA DE OBJEÇÕES ===== -->
+<section id="objections">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge">Sem desculpas</div>
+      <h2>Funciona para você — mesmo que...</h2>
+    </div>
+
+    <div class="objection-list">
+      <div class="objection-item">
+        <span class="objection-check">✓</span>
+        <div>
+          <h3>Não saiba nada de edição</h3>
+          <p>O processo é idêntico ao de aplicar qualquer filtro. Se você sabe clicar, você sabe usar.</p>
+        </div>
+      </div>
+      <div class="objection-item">
+        <span class="objection-check">✓</span>
+        <div>
+          <h3>Seja iniciante ou intermediário</h3>
+          <p>Criado especialmente para quem quer resultado profissional sem anos de experiência.</p>
+        </div>
+      </div>
+      <div class="objection-item">
+        <span class="objection-check">✓</span>
+        <div>
+          <h3>Edite só pelo celular</h3>
+          <p>Funciona no CapCut — o editor mais popular do Brasil para criadores mobile-first.</p>
+        </div>
+      </div>
+      <div class="objection-item">
+        <span class="objection-check">✓</span>
+        <div>
+          <h3>Queira resultado imediato</h3>
+          <p>Download liberado na hora. Em menos de 5 minutos você já está aplicando no seu vídeo.</p>
+        </div>
+      </div>
+      <div class="objection-item">
+        <span class="objection-check">✓</span>
+        <div>
+          <h3>Não tenha equipamento caro</h3>
+          <p>O LUT eleva a qualidade de qualquer gravação — até vídeo de celular fica incrível.</p>
+        </div>
+      </div>
+      <div class="objection-item">
+        <span class="objection-check">✓</span>
+        <div>
+          <h3>Edite para qualquer plataforma</h3>
+          <p>Instagram, TikTok, YouTube, Reels — os LUTs ficam ótimos em qualquer formato.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== OFERTA ===== -->
+<section id="offer">
+  <div class="container">
+    <div class="section-header">
+      <div class="badge">Oferta especial</div>
+      <h2>Invista menos do que um café</h2>
+    </div>
+
+    <div class="offer-box">
+      <p class="price-old">De R$49,90</p>
+      <div class="price-new">
+        <span>R$</span>14,90
+      </div>
+      <p class="price-tag">✦ Pagamento único · Acesso vitalício</p>
+
+      <div class="offer-features">
+        <div class="offer-feature">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          <span>Pack completo de <strong>LUTs profissionais</strong></span>
+        </div>
+        <div class="offer-feature">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          <span>Compatível com <strong>Premiere, CapCut, DaVinci e Final Cut</strong></span>
+        </div>
+        <div class="offer-feature">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          <span><strong>Download imediato</strong> após a compra</span>
+        </div>
+        <div class="offer-feature">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          <span>Funciona em <strong>qualquer câmera ou celular</strong></span>
+        </div>
+        <div class="offer-feature">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+          <span>Acesso <strong>vitalício</strong> — pague uma vez, use sempre</span>
+        </div>
+      </div>
+
+      <a href="https://pay.kiwify.com.br/8Z7BKKo" class="btn btn-xl" target="_blank" rel="noopener" style="width:100%;display:block;text-align:center;">
+        ▶ Quero meus LUTs agora — R$14,90
+      </a>
+
+      <div class="guarantee">
+        <strong>🔒 Compra 100% segura</strong> · Processado pela Kiwify · Pagamento criptografado
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section id="final-cta">
+  <div class="container">
+    <div class="badge">Último aviso</div>
+    <h2>Seus próximos vídeos merecem cores profissionais</h2>
+    <p>Por menos do que você gasta em qualquer coisa por dia, seus vídeos vão parecer produzidos por uma agência.</p>
+    <a href="https://pay.kiwify.com.br/8Z7BKKo" class="btn btn-xl" target="_blank" rel="noopener">
+      ▶ Garantir meu Pack de LUTs agora
+    </a>
+    <p style="margin-top:1.25rem;font-size:0.85rem;">Download imediato · Funciona no celular · Sem assinaturas</p>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="logo-wrap" style="justify-content:center;margin-bottom:1rem;">
+      <svg style="height:28px;width:auto;" viewBox="0 0 3508 2480.4" xmlns="http://www.w3.org/2000/svg" aria-label="AguiarFilm">
+        <defs>
+          <style>.af0{fill:#EFEEE7;opacity:0.7}.af1{fill:#588CAF;opacity:0.7}</style>
+        </defs>
+        <text x="120.14" y="1449.37" class="af0" style="font-weight:900;font-size:555.52px;font-family:sans-serif;">AGUIAR</text>
+        <text x="2612.18" y="1449.37" class="af1" style="font-size:304.2px;font-family:sans-serif;">FILM</text>
+      </svg>
+    </div>
+    <p>© 2025 AguiarFilm · Todos os direitos reservados</p>
+    <p style="margin-top:0.35rem;">Produto digital · Entrega imediata via Kiwify</p>
+  </div>
+</footer>
+
+<!-- ===== FLOATING CTA ===== -->
+<div class="floating-cta" id="floatingCta">
+  <a href="https://pay.kiwify.com.br/8Z7BKKo" class="btn" target="_blank" rel="noopener">
+    ▶ Quero por R$14,90
+  </a>
+</div>
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+  // Floating CTA aparece após rolar 400px
+  const floatingCta = document.getElementById('floatingCta');
+  window.addEventListener('scroll', () => {
+    floatingCta.classList.toggle('visible', window.scrollY > 400);
+  }, { passive: true });
+
+  // Smooth scroll para links internos
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // Intersection Observer para animação de entrada suave
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.benefit-card, .comparison-card, .step, .compat-card, .objection-item').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(20px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(el);
+  });
+</script>
+
+</body>
+</html>
